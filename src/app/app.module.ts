@@ -6,6 +6,7 @@ import { BarComponent } from './bar/bar.component';
 import { PieComponent } from './pie/pie.component';
 import { ScatterComponent } from './scatter/scatter.component';
 import { SingleBarComponent } from './single-bar/single-bar.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { SingleBarComponent } from './single-bar/single-bar.component';
     BarComponent,
     PieComponent,
     ScatterComponent,
-    SingleBarComponent
+    SingleBarComponent,
+    ProgressBarComponent
   ],
   imports: [
     BrowserModule,

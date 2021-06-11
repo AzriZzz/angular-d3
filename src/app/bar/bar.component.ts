@@ -17,8 +17,8 @@ export class BarComponent implements OnInit {
   ];
   private svg;
   private margin = 50;
-  private width = 750 - (this.margin * 2);
-  private height = 400 - (this.margin * 2);
+  private width = 550 - (this.margin * 2);
+  private height = 200 - (this.margin * 2);
 
   private createSvg(): void {
     this.svg = d3.select("figure#bar")

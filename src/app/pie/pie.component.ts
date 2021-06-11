@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 
 @Component({
@@ -9,43 +9,43 @@ import * as d3 from 'd3';
 export class PieComponent implements OnInit {
   private data = [
     {
-      label: 'MSHL Additional premium support 1',
+      label: 'Total Support 1',
       info: '500.00',
     },
     {
-      label: 'MSHL Premium subsidies 3',
+      label: 'Subsidies 3',
       info: '400.00',
     },
     {
-      label: 'MSHL Covid-19 subsidies 5',
+      label: 'Covid 19 5',
       info: '100.00',
     },
     {
-      label: 'MSHL Pioneer Generation subsidies 8',
+      label: 'Generation 8',
       info: '290.00',
     },
     {
-      label: 'MSHL Additional premium support 2',
+      label: 'Total Support 2',
       info: '500.00',
     },
     {
-      label: 'MSHL Premium subsidies 4',
+      label: 'Subsidies 4',
       info: '400.00',
     },
     {
-      label: 'MSHL Covid-19 subsidies 6',
+      label: 'Covid 19 6',
       info: '100.00',
     },
     {
-      label: 'MSHL Pioneer Generation subsidies 9',
+      label: 'Generation 9',
       info: '290.00',
     },
     {
-      label: 'MSHL Covid-19 subsidies 7',
+      label: 'Covid 19 7',
       info: '100.00',
     },
     {
-      label: 'MSHL Pioneer Generation subsidies 10',
+      label: 'Generation 10',
       info: '290.00',
     }
   ];
@@ -56,6 +56,25 @@ export class PieComponent implements OnInit {
   // The radius of the pie chart is half the smallest side
   private radius = Math.min(this.width, this.height) / 2 - this.margin;
   private colors;
+
+
+  constructor(private elem: ElementRef, private cdRef: ChangeDetectorRef) {}
+
+  ngOnInit(): void {
+  }
+
+  ngAfterViewInit() {
+    this.createSvg();
+    this.createColors();
+    this.drawChart();
+  }
+
+  ngOnChanges() {
+    this.createSvg();
+    this.createColors();
+    this.drawChart();
+    this.cdRef.detectChanges();
+  }
 
   private createSvg(): void {
     this.svg = d3.select("figure#pie")
@@ -70,7 +89,20 @@ export class PieComponent implements OnInit {
   }
 
   private createColors(): void {
-    const COLOR_RANGE = ['#307472', '#E7B464', '#1AA594', '#E7ADD9', '#8CA0A1', '#FFA596', '#759BE4', '#FFD037', '#8B77E7', '#99EAFF', '#A5CF4C' ];
+    
+    const COLOR_RANGE = [
+      '#E5B464',
+      '#1AA594',
+      '#E5ADD9',
+      '#8CA1A1',
+      '#FFA596',
+      '#215452',
+      '#559BE4',
+      '#FFD025',
+      '#8B55E5',
+      '#99EAFF',
+      '#A5CF4C',
+    ];
     
     //MAP THE COLOR CORRECTLY ACCORDING TO THE COLOR RANGE
     this.colors = 
@@ -110,7 +142,7 @@ export class PieComponent implements OnInit {
     .attr("font-family", "sans-serif")
     .attr("font-size", "16px")
     .attr("font-weight", "400")
-    .text("For policy year starting");
+    .text("The amount that is left is");
 
     //second headline
     this.svg
@@ -135,12 +167,6 @@ export class PieComponent implements OnInit {
     .text("$1,290.00");
   }
 
-  constructor() { }
 
-  ngOnInit(): void {
-    this.createSvg();
-    this.createColors();
-    this.drawChart();
-  }
 
 }

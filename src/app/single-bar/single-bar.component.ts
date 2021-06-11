@@ -18,8 +18,8 @@ export class SingleBarComponent implements OnInit {
 
   private svg;
   private margin = 50;
-  private width = 750;
-  private height = 400;
+  private width = 550;
+  private height = 200;
   private barHeight = 100;
 
   private createSvg(): void {
