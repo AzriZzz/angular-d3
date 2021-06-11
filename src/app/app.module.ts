@@ -7,6 +7,7 @@ import { PieComponent } from './pie/pie.component';
 import { ScatterComponent } from './scatter/scatter.component';
 import { SingleBarComponent } from './single-bar/single-bar.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { LineProgressBarComponent } from './line-progress-bar/line-progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
     PieComponent,
     ScatterComponent,
     SingleBarComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    LineProgressBarComponent
   ],
   imports: [
     BrowserModule,
